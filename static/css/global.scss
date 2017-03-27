@@ -1,0 +1,52 @@
+
+$class-name: 't', 'r', 'b', 'l';
+$direction: 'top', 'right', 'bottom', 'left';
+$size: 'xs', 'sm', '', 'md', 'lg';
+
+@for $size-types from 1 through 5 {
+  @for $dir-types from 1 through 4 {
+    @if $size-types == 3 {
+      .m-#{nth($class-name, $dir-types)}{
+        margin-#{nth($direction, $dir-types)}: $size-types*5px;
+      }
+    } @else {
+      .m-#{nth($class-name, $dir-types)}-#{nth($size, $size-types)}{
+        margin-#{nth($direction, $dir-types)}: $size-types*5px;
+      }
+    }
+  }
+}
+
+@for $font-size from 1 through 10 {
+  .f-s-#{$font-size*2+12}{
+    font-size: #{$font-size*2+12}px;
+  }
+}
+
+%base-style {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+html,body,ul,li{
+  @extend %base-style
+}
+li{
+  list-style: none;
+}
+
+.font-bold{
+  font-weight: bold;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
+}
+
+text-center{
+  text-align: center;
+}
