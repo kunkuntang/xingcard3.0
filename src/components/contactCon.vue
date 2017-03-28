@@ -11,6 +11,13 @@
           <div class="f-s-14">短号：{{contact.tel}}</div>
           <div class="f-s-14">长号：{{contact.phone}}</div>
         </div>
+        <div class="operate col-xs-12 m-t-sm">
+          <div class="btn-group row">
+            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-belize-hole"><a href="tel:contact.phone"><span class="fui-video"></span></a></button>
+            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-silver"><a href="tel:contact.tel"><span class="fui-mic"></span></a></button>
+            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-concrete"><a href="sms:contact.phone"><span class="fui-chat"></span></a></button>
+          </div>
+        </div>
         <div class="clearfix"></div>
       </div>
     </div>
@@ -23,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .content{
   padding-top: 70px;
 }
@@ -32,4 +39,19 @@ export default {
   border: 1px solid #E3E3E4;
   padding: 10px;
 }
+.operate a{
+  color: #ffffff;
+  display: block;
+}
+.btn-group{
+  display: block
+}
+.btn-group .btn:active{
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+}
+.btn-group .btn:last-child{
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px;
+}
+
 </style>
