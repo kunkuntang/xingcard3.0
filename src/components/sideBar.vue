@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-con" @click.self="hideSideBar">
     <ul class="side-bar palette-peter-river" :class="isShow ? 'show' : ''">
-      <img src="/static/img/logo.jpg" class="img-circle img-response" alt="" width="90" height="90">
+      <img src="/xingcard3.0/static/img/logo.jpg" class="img-circle img-response" alt="" width="90" height="90">
       <div class="title f-s-22 m-t-sm">
         <li class="department f-s-16 palette" :class="curIdx === index ? 'palette-belize-hole' : ''" v-for="(department, index) in departList" @click="select(index)">{{department}}</li>
       </div>
