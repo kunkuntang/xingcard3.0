@@ -3,28 +3,38 @@
     <div class="col-xs-2"><span class="fui-arrow-left" @click="goBack"></span></div>
     <div class="search-box col-xs-8 p-l">
       <div class="row">
-        <input class="search form-control" type="search" v-model="keyword" placeholder="请输入联系人...">
+        <input ref="searchInput" class="search form-control" type="search" v-model="searchQuery" @keyup.enter="doSearch(searchQuery)" placeholder="请输入联系人..." autofocus>
         <span class="clear-btn fui-cross f-s-14" @click="clearSearch"></span>
       </div>
     </div>
-    <div class="col-xs-2"><span class="fui-search" @click="doSearch"></span></div>
+    <div class="col-xs-2"><span class="fui-search" @click="doSearch(searchQuery)"></span></div>
     <div class="clearfix"></div>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
+  mounted () {
+    // input始终获得焦点
+    this.$refs.searchInput.focus()
+  },
   data () {
     return {
-      keyword: ''
+      searchQuery: ''
+    }
+  },
+  watch: {
+    searchQuery () {
+      this.doSearch(this.searchQuery)
     }
   },
   methods: {
+    ...mapActions({
+      doSearch: 'searchContact'
+    }),
     clearSearch () {
-      this.keyword = ''
-    },
-    doSearch () {
-      this.$emit('doSearch', this.keyword)
+      this.searchQuery = ''
     },
     goBack () {
       this.$emit('goBack')
