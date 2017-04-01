@@ -62,12 +62,11 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.(htm|html)$/i,
+        loader: 'html-withimg-loader'
       }
-      // },
-      // {
-      //   test: /\.css$/,
-      //   loader: 'style-loader!css'
-      // }
     ]
   }
 }

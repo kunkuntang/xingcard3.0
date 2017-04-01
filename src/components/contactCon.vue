@@ -4,7 +4,7 @@
     <div class="m-l-sm m-r-sm">
       <div class="contact m-b-md" v-for="contact in contactList">
         <div class="col-xs-4 m-t-sm">
-          <img src="/xingcard3.0/static/img/icon.gif" alt="" class="img-circle">
+          <img src="../../static/img/icon.gif" alt="" class="img-circle">
         </div>
         <div class="col-xs-8 text-left">
           <span class="f-s-22">{{contact.username}}</span>
@@ -13,9 +13,9 @@
         </div>
         <div class="operate col-xs-12 m-t-sm">
           <div class="btn-group row">
-            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-belize-hole"><a href="tel:contact.phone"><span class="iconfont">&#xe615;</span></a></button>
-            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-emerald"><a href="tel:contact.tel"><span class="iconfont">&#xe604;</span></a></button>
-            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-orange"><a href="sms:contact.phone"><span class="iconfont">&#xe61f;</span></a></button>
+            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-belize-hole"><a :href="'tel' + contact.phone"><span class="iconfont">&#xe615;</span></a></button>
+            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-emerald"><a :href="'tel' + contact.tel"><span class="iconfont">&#xe604;</span></a></button>
+            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-orange"><a :href="['tel:' + contact.phone]"><span class="iconfont">&#xe61f;</span></a></button>
           </div>
         </div>
         <div class="clearfix"></div>
