@@ -1,11 +1,11 @@
 import * as routePath from './route-path'
 
-import index from './index'
+import login from './index'
 
 const route = [
   {
-    path: routePath.index,
-    component: index
+    path: routePath.login,
+    component: login
   }
 ]
 
