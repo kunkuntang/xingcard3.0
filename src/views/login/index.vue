@@ -4,8 +4,8 @@
       <img src="../../../static/img/logo.jpg" alt="" width="200" height="200">
     </div>
     <div class="loginBtn-con">
-      <input type="text" v-model="loginKey">
-      <button  class="btn btn-primary login-btn m-t-lg" @click="login" onkeyup.enter="login">login</button>
+      <input type="text" v-model="loginKey" v-on:keyup.enter="login">
+      <button  class="btn btn-primary login-btn m-t-lg" @click="login">login</button>
     </div>
   </div>
 </template>
