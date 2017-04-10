@@ -27,6 +27,7 @@ import { mapMutations, mapGetters, mapState } from 'vuex'
 
 export default {
   beforeRouteEnter (to, from, next) {
+    console.log('axios get')
     axios.post('http://xingkongus.duapp.com/index.php/User/loginAPP', {
       key: 82015,
       name: 'xingkongus'
