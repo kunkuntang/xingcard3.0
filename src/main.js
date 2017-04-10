@@ -4,6 +4,7 @@ import Vue from 'vue'
 import vuex from 'vuex'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 
 import jQuery from 'jquery'
 import $ from './assets/jquery-vendor'
