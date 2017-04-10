@@ -21,18 +21,29 @@ import pageTitle from '@/components/pageTitle'
 import searchBox from '@/components/searchBox'
 import sideBar from '@/components/sideBar'
 import contactCon from '@/components/contactCon'
+import axios from 'axios'
 
 import { mapMutations, mapGetters, mapState } from 'vuex'
 
 export default {
   beforeRouteEnter (to, from, next) {
-    // 在渲染该组件的对应路由被 confirm 前调用
-    // 不！能！获取组件实例 `this`
-    // 因为当钩子执行前，组件实例还没被创建
-    /* global Vue */
-    Vue.axios.get('http://xingkongus.duapp.com/index.php/User/loginAPP').then((response) => {
-      console.log(response.data)
-    })
+    axios.post('http://xingkongus.duapp.com/index.php/User/loginAPP', {
+      key: 82015,
+      name: 'xingkongus'
+    },
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        transformRequest: [function (data) {
+          // Do whatever you want to transform the data
+          data = $.param(data)
+          return data
+        }]
+      }).then(function (response) {
+        let data = response.data
+        console.log(response)
+      })
     next()
   },
   created () {

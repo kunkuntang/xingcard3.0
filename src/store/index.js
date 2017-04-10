@@ -14,6 +14,9 @@ const state = {
 }
 
 const mutations = {
+  updateData (state) {
+    
+  },
   changeTitle (state, idx) {
     state.title = data.departments[idx].name
   },
