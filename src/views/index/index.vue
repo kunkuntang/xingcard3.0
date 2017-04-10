@@ -21,10 +21,20 @@ import pageTitle from '@/components/pageTitle'
 import searchBox from '@/components/searchBox'
 import sideBar from '@/components/sideBar'
 import contactCon from '@/components/contactCon'
+import axios from 'axios'
 
 import { mapMutations, mapGetters, mapState } from 'vuex'
 
 export default {
+  beforeRouteEnter (to, from, next) {
+    axios.post('http://xingkongus.duapp.com/index.php/User/loginAPP', {
+      key: 82015,
+      name: 'xingkongus'
+    }).then(function (response) {
+      console.log(response)
+    })
+    next()
+  },
   created () {
     // console.log(data)
     // this.updateContactList(data)
