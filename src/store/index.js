@@ -3,25 +3,34 @@ import vuex from 'vuex'
 
 vue.use(vuex)
 
-import data from '@/mock/data'
-
 const state = {
-  departList: data.departments.map((depart) => depart.name),
-  title: data.department_belong,
-  contactList: data.departments[0].members,
+  data: {},
+  departList: [],
+  title: '',
+  contactList: [],
   curIdx: 0,
-  isShowBar: false
+  isShowBar: false,
+  isShowToast: false
 }
 
 const mutations = {
-  updateData (state) {
-    
+  updateData (state, reqData) {
+    state.data = reqData
+    state.departList = reqData.departments.map((depart) => depart.name)
+    state.title = reqData.department_belong
+    state.contactList = reqData.departments[0].members
   },
   changeTitle (state, idx) {
-    state.title = data.departments[idx].name
+    state.title = state.data.departments[idx].name
   },
   toggleBar (state) {
     state.isShowBar = !state.isShowBar
+  },
+  showToast (state) {
+    state.isShowToast = true
+  },
+  hideToast (state) {
+    state.isShowToast = false
   },
   updateContactList (state, newList) {
     state.contactList = newList
@@ -33,13 +42,13 @@ const getters = {
 }
 
 const actions = {
-  changeDepart ({commit}, idx) {
-    let tempData = data.departments[idx].members
+  changeDepart ({commit, state}, idx) {
+    let tempData = state.data.departments[idx].members
     commit('toggleBar')
     commit('changeTitle', idx)
     commit('updateContactList', tempData)
   },
-  searchContact ({commit}, keyword) {
+  searchContact ({commit, data}, keyword) {
     let tempData = []
     data.departments.map((depart) => {
       depart.members.map((contact) => {

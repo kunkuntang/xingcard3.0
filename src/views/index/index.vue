@@ -21,31 +21,10 @@ import pageTitle from '@/components/pageTitle'
 import searchBox from '@/components/searchBox'
 import sideBar from '@/components/sideBar'
 import contactCon from '@/components/contactCon'
-import axios from 'axios'
 
 import { mapMutations, mapGetters, mapState } from 'vuex'
 
 export default {
-  beforeRouteEnter (to, from, next) {
-    axios.post('http://xingkongus.duapp.com/index.php/User/loginAPP', {
-      key: 82015,
-      name: 'xingkongus'
-    },
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        transformRequest: [function (data) {
-          // Do whatever you want to transform the data
-          data = $.param(data)
-          return data
-        }]
-      }).then(function (response) {
-        let data = response.data
-        console.log(response)
-      })
-    next()
-  },
   created () {
     // console.log(data)
     // this.updateContactList(data)
@@ -54,7 +33,6 @@ export default {
   },
   data () {
     return {
-      allData: this.$store.state.allData,
       isSearch: false,
       curIdx: 0
     }

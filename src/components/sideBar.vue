@@ -5,6 +5,9 @@
       <div class="title f-s-22 m-t-sm">
         <li class="department f-s-16 palette" :class="curIdx === index ? 'palette-belize-hole' : ''" v-for="(department, index) in departList" @click="select(index)">{{department}}</li>
       </div>
+      <div class="exit text-center">
+        <span class="fui-exit" @click="logout"></span>
+      </div>
     </ul>
   </div>
 </template>
@@ -24,6 +27,11 @@ export default {
     })
   },
   methods: {
+    logout () {
+      this.hideSideBar()
+      this.$router.go(-1)
+      document.cookie = 'www.xingkong.us='
+    },
     ...mapMutations({
       hideSideBar: 'toggleBar'
     }),
@@ -44,6 +52,7 @@ export default {
   z-index: 9999999;
 }
 .side-bar{
+  position: relative;
   min-width: 150px;
   width: 60%;
   padding: 10px 0 10px 0;
@@ -57,7 +66,19 @@ export default {
   height: 90px;
   background-color: #ffffff;
 }
-.department{
-  /*background-color: peachpuff;*/
+.exit{
+  position: absolute;
+  width: 100%;
+  bottom: 40px;
+  font-size: 30px;
+  color: #3498db;
+}
+.exit span{
+  display: inline-block;
+  border-radius: 50%;
+  background: #ffffff;
+  width: 70px;
+  line-height: 70px;
+  transform: rotateY(180deg)
 }
 </style>

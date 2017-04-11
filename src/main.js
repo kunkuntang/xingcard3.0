@@ -8,9 +8,10 @@ import axios from 'axios'
 
 import jQuery from 'jquery'
 import $ from './assets/jquery-vendor'
-import 'normalize.css'
 
+import 'normalize.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/ladda/dist/ladda.min.css'
 import 'static/css/flat-ui.min.css'
 import 'static/css/iconfont.css'
 import 'static/css/global.css'
