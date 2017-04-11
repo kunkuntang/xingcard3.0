@@ -20,6 +20,8 @@ import path from 'path'
 export default {
   name: 'app',
   created () {
+    // 取消首屏加载动画
+    $('#loading').css('display', 'none')
     let cookies = this.getCookies()
     let vm = this
     if (cookies) {

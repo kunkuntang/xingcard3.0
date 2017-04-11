@@ -1,7 +1,7 @@
 <template>
   <div class="login-con">
     <div class="icon">
-      <img src="../../../static/img/logo.jpg" alt="" width="200" height="200">
+      <img src="../../../static/img/logo.jpg" alt="" width="170" height="170">
     </div>
     <div class="loginBtn-con">
       <input type="text" v-model="loginKey" v-on:keyup.enter="login">
@@ -129,7 +129,7 @@ export default {
 }
 .loginBtn-con{
   margin: 0 auto;
-  margin-top: 30%;
+  margin-top: 15%;
   width: 70%;
 }
 
