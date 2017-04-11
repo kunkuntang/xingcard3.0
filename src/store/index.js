@@ -21,6 +21,9 @@ const mutations = {
     state.title = reqData.department_belong
     state.contactList = reqData.departments[0].members
   },
+  updateCurIdx (state, idx) {
+    state.curIdx = idx
+  },
   changeTitle (state, idx) {
     state.title = state.data.departments[idx].name
   },
@@ -55,11 +58,10 @@ const actions = {
     commit('changeTitle', idx)
     commit('updateContactList', tempData)
   },
-  searchContact ({commit, data}, keyword) {
+  searchContact ({commit, state}, keyword) {
     let tempData = []
-    data.departments.map((depart) => {
+    state.data.departments.map((depart) => {
       depart.members.map((contact) => {
-        console.log(contact.username)
         if (contact.username.indexOf(keyword) !== -1) {
           tempData.push(contact)
         }

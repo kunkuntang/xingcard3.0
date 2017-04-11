@@ -6,7 +6,7 @@
     <div>
       <title-con class="title-con">
         <transition name="fade">
-          <search-box class="title" v-if="isSearch" v-on:doSearch="doSearch" v-on:goBack="cancelSearch"></search-box>
+          <search-box class="title" v-if="isSearch" v-on:goBack="cancelSearch"></search-box>
           <page-title class="title" v-else="isSearch" v-on:searchClick="searchClick" v-on:showBar="showSideBar"></page-title>
         </transition>
       </title-con>
@@ -66,10 +66,6 @@ export default {
     },
     searchClick () {
       this.isSearch = true
-      console.log(this.isSearch)
-    },
-    doSearch (keyword) {
-      console.log(keyword)
     },
     cancelSearch () {
       this.isSearch = false

@@ -17,7 +17,6 @@ export default {
   },
   methods: {
     searchClick () {
-      console.log('click')
       this.$emit('searchClick')
     },
     ...mapMutations({

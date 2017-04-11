@@ -17,11 +17,12 @@ import {mapState, mapActions, mapMutations} from 'vuex'
 export default {
   data () {
     return {
-      curIdx: 0
+      // curIdx: 0
     }
   },
   computed: {
     ...mapState({
+      curIdx: 'curIdx',
       isShow: state => state.isShowBar,
       departList: state => state.departList
     })
@@ -32,11 +33,16 @@ export default {
       this.$router.go(-1)
       document.cookie = 'www.xingkong.us='
     },
+    select (idx) {
+      this.changeDepart(idx)
+      this.updateCurIdx(idx)
+    },
     ...mapMutations({
-      hideSideBar: 'toggleBar'
+      hideSideBar: 'toggleBar',
+      updateCurIdx: 'updateCurIdx'
     }),
     ...mapActions({
-      select: 'changeDepart'
+      changeDepart: 'changeDepart'
     })
   }
 }

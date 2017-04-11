@@ -39,8 +39,12 @@ export default {
           }]
         }).then(function (response) {
           vm.closeLoading()
-          vm.updateData(response.data)
-          vm.$router.push({path: path.index.index})
+          if (response.data.result === 80805012) {
+            vm.updateData(response.data)
+            vm.$router.push({path: path.index.index})
+          } else {
+            vm.$router.push({path: path.login.login})
+          }
         })
     } else {
       this.$router.push({path: path.login.login})
