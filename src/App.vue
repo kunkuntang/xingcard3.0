@@ -1,6 +1,14 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <transition name="loading-fade">
+      <div class="loading" v-show="isLoading">
+        <div class="sk-spinner sk-wandering-cubes">
+          <div class="sk-cube"></div>
+          <div class="sk-cube sk-cube2"></div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -14,8 +22,8 @@ export default {
   created () {
     let cookies = this.getCookies()
     let vm = this
-    console.log(cookies)
     if (cookies) {
+      vm.openLoading()
       axios.post('http://xingkongus.duapp.com/index.php/User/loginAPP', {
         key: 82015,
         name: cookies
@@ -30,10 +38,18 @@ export default {
             return data
           }]
         }).then(function (response) {
+          vm.closeLoading()
           vm.updateData(response.data)
           vm.$router.push({path: path.index.index})
         })
+    } else {
+      this.$router.push({path: path.login.login})
     }
+  },
+  computed: {
+    ...mapState({
+      isLoading: 'isLoading'
+    })
   },
   methods: {
     getCookies () {
@@ -48,7 +64,9 @@ export default {
       return null
     },
     ...mapMutations({
-      updateData: 'updateData'
+      updateData: 'updateData',
+      closeLoading: 'closeLoading',
+      openLoading: 'openLoading'
     })
   },
   store
@@ -62,5 +80,28 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.loading{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 120px;
+  margin-top: -60px;
+}
+
+.loading .sk-wandering-cubes .sk-cube{
+  background-color: #3498db;
+}
+
+.loading-fade-enter-active,
+.loading-fade-leave-active{
+  transition: all .5s ease;
+  opacity: 0;
+}
+
+.loading-fade-enter,
+.loading-fade-leave{
+  opacity: 1;
 }
 </style>

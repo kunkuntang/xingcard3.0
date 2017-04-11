@@ -25,12 +25,6 @@ import contactCon from '@/components/contactCon'
 import { mapMutations, mapGetters, mapState } from 'vuex'
 
 export default {
-  created () {
-    // console.log(data)
-    // this.updateContactList(data)
-  },
-  mounted () {
-  },
   data () {
     return {
       isSearch: false,
@@ -129,4 +123,5 @@ export default {
 .fade-leave-to{
   opacity: 0
 }
+
 </style>

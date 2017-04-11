@@ -44,7 +44,6 @@ export default {
       let play = setInterval(() => {
         l.setProgress(progress)
         progress += 0.1
-        console.log(progress)
         if (Math.floor(progress) === 1) {
           l.stop()
           clearInterval(play)

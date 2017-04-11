@@ -20,6 +20,7 @@
     "jquery": "^3.2.1",
     "ladda": "^1.0.0",
     "normalize.css": "^5.0.0",
+    "spinkit": "^1.2.5",
     "style-loader": "^0.16.0",
     "vue": "^2.2.2",
     "vue-router": "^2.2.0",

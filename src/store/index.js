@@ -10,7 +10,8 @@ const state = {
   contactList: [],
   curIdx: 0,
   isShowBar: false,
-  isShowToast: false
+  isShowToast: false,
+  isLoading: false
 }
 
 const mutations = {
@@ -31,6 +32,12 @@ const mutations = {
   },
   hideToast (state) {
     state.isShowToast = false
+  },
+  closeLoading (state) {
+    state.isLoading = false
+  },
+  openLoading (state) {
+    state.isLoading = true
   },
   updateContactList (state, newList) {
     state.contactList = newList
