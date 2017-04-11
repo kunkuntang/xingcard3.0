@@ -1,6 +1,5 @@
 import vue from 'vue'
 import vuex from 'vuex'
-import pinyin from 'pinyin'
 
 vue.use(vuex)
 
