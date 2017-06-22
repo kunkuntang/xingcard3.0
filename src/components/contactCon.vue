@@ -4,7 +4,7 @@
     <div class="m-l-sm m-r-sm">
       <div class="contact m-b-md" v-for="contact in contactList">
         <div class="col-xs-4 m-t-sm">
-          <img src="../../static/img/icon.gif" alt="" class="img-circle">
+          <img src="../../static/img/icon.png" alt="" class="img-circle">
         </div>
         <div class="col-xs-8 text-left">
           <span class="f-s-22">{{contact.username}}</span>
