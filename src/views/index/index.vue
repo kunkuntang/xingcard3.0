@@ -7,7 +7,7 @@
       <title-con class="title-con">
         <transition name="fade">
           <search-box class="title" v-if="isSearch" v-on:goBack="cancelSearch"></search-box>
-          <page-title class="title" v-else="isSearch" v-on:searchClick="searchClick" v-on:showBar="showSideBar"></page-title>
+          <page-title class="title" v-else v-on:searchClick="searchClick" v-on:showBar="showSideBar"></page-title>
         </transition>
       </title-con>
       <contact-con></contact-con>
