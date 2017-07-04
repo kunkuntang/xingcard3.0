@@ -71,8 +71,7 @@ export default {
       this.isSearch = false
     },
     ...mapMutations({
-      showSideBar: 'toggleBar',
-      updateContactList: 'updateContactList'
+      showSideBar: 'toggleBar'
     })
   }
 }
