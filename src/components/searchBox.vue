@@ -37,6 +37,8 @@ export default {
       this.searchQuery = ''
     },
     goBack () {
+      this.clearSearch()
+      this.doSearch('')
       this.$emit('goBack')
     }
   }

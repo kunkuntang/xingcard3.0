@@ -2,7 +2,7 @@
   <div class="content">
     <!--<div class="title m-b-md">{{data.name}}</div>-->
     <div class="m-l-sm m-r-sm">
-      <div class="contact m-b-md" v-for="contact in contactList">
+      <div class="contact m-b-md" v-for="(contact, index) in contactList" v-bind:key="{index}">
         <div class="col-xs-4 m-t-sm">
           <img src="../../static/img/icon.png" alt="" class="contact-img img-circle">
         </div>
@@ -15,7 +15,7 @@
           <div class="btn-group row">
             <button type="button" class="col-xs-4 btn btn-sm btn-white palette-belize-hole"><a :href="['tel:' + contact.phone]"><span class="iconfont">&#xe615;</span></a></button>
             <button type="button" class="col-xs-4 btn btn-sm btn-white palette-emerald"><a :href="['tel:' + contact.tel]"><span class="iconfont">&#xe604;</span></a></button>
-            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-orange"><a :href="['msm:' + contact.phone]"><span class="iconfont">&#xe61f;</span></a></button>
+            <button type="button" class="col-xs-4 btn btn-sm btn-white palette-orange"><a :href="['sms:' + contact.phone]"><span class="iconfont">&#xe61f;</span></a></button>
           </div>
         </div>
         <div class="clearfix"></div>

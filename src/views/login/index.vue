@@ -33,6 +33,17 @@ export default {
     })
   },
   methods: {
+    getCookieValue () {
+      let strCookie = document.cookie
+      let arrCookie = strCookie.split('; ')
+      for (let i = 0; i < arrCookie.length; i++) {
+        let arr = arrCookie[i].split('=')
+        if (arr[0] === 'www.xingkong.us') {
+          return arr[1]
+        }
+      }
+      return ''
+    },
     login () {
       this.$router.push({path: path.index.index})
     },
@@ -111,7 +122,7 @@ export default {
     toast
   },
   beforeRouteLeave (to, from, next) {
-    if (!this.title) {
+    if (this.getCookieValue !== 'xingkongus') {
       this.authLogin(next)
     } else {
       next()
