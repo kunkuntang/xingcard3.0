@@ -6,17 +6,26 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 
-import jQuery from 'jquery'
-import $ from './assets/jquery-vendor'
-// import spinkit from 'spinkit'
-
 import 'normalize.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/ladda/dist/ladda.min.css'
 import '../node_modules/spinkit/css/spinkit.css'
-import 'static/css/flat-ui.min.css'
+import 'static/css/flat-ui.css'
 import 'static/css/iconfont.css'
 import 'static/css/global.css'
+
+import * as OfflinePluginRuntime from 'offline-plugin/runtime'
+
+if (process.env.NODE_ENV === 'production') {
+  OfflinePluginRuntime.install({
+    onUpdateReady () {
+      OfflinePluginRuntime.applyUpdate()
+    },
+    onUpdated () {
+      window.location.reload()
+    }
+  })
+}
 
 Vue.config.productionTip = false
 

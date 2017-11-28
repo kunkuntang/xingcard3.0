@@ -23,6 +23,7 @@ import sideBar from '@/components/sideBar'
 import contactCon from '@/components/contactCon'
 
 import { mapMutations, mapGetters, mapState } from 'vuex'
+import utils from 'utils'
 
 export default {
   data () {
@@ -38,13 +39,17 @@ export default {
   },
   watch: {
     showBar (value) {
-      /* global $ */
+      // 当sidebar弹出时防止滑动右边空白地方让列表滚动
+      let body = document.getElementsByTagName('body')[0]
+      let stopScroll = (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        return false
+      }
       if (value) {
-        $('body').on('touchmove', function (event) {
-          event.preventDefault
-        }, false)
+        utils.addEvent(body, 'touchmove', stopScroll)
       } else {
-        $('body').off('touchmove')
+        utils.removeEvent(body, 'touchmove', stopScroll)
       }
     }
   },
