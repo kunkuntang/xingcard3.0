@@ -6,10 +6,6 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 
-import jQuery from 'jquery'
-import $ from './assets/jquery-vendor'
-// import spinkit from 'spinkit'
-
 import 'normalize.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/ladda/dist/ladda.min.css'

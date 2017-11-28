@@ -2,7 +2,7 @@
   <div class="content">
     <!--<div class="title m-b-md">{{data.name}}</div>-->
     <div class="m-l-sm m-r-sm">
-      <div class="contact m-b-md" v-for="(contact, index) in contactList" :key="{index}">
+      <div class="contact m-b-md" v-for="(contact, index) in contactList" :key="index">
         <div class="col-xs-4 m-t-sm">
           <img src="../../static/img/icon.png" alt="" class="contact-img img-circle">
         </div>

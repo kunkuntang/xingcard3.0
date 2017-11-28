@@ -17,6 +17,7 @@ import axios from 'axios'
 import Ladda from 'ladda'
 
 import { mapMutations, mapState } from 'vuex'
+import utils from 'utils'
 import toast from '@/components/toast'
 
 export default {
@@ -51,56 +52,40 @@ export default {
       }, 200)
       // 请求服务器带数据
       let vm = this
-      axios.post('https://lenkuntang.cn/xingcardServer', {
-        key: 82015,
-        name: this.loginKey
-      },
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          transformRequest: [function (data) {
-            /* global $ */
-            data = $.param(data)
-            return data
-          }]
-        }).then(function (response) {
-          // 登陆状态判断
-          let data = response.data
-          if (data.result === 201) {
-            vm.toastText = '别闹，又想搞事情！'
-            vm.showToast()
-            if (l.isLoading) {
-              l.stop()
-              clearInterval(play)
-            }
-            next(false)
-          } else if (data.result === 211) {
-            vm.toastText = '服务器开小差了，请联系管理员'
-            vm.showToast()
-            next(false)
-          } else if (data.result === 200) {
-            vm.toastText = '社团ID错误，请重试'
-            vm.showToast()
-            if (l.isLoading) {
-              l.stop()
-              clearInterval(play)
-            }
-            next(false)
-          } else {
-            // 登陆成功，设置cookies
-            let date = new Date()
-            let expireDays = 30
-            date.setTime(date.getTime() + expireDays * 24 * 3600 * 1000)
-            document.cookie = 'www.xingkong.us=' + vm.loginKey + '; expires=' + date.toGMTString()
-            vm.updateData(data)
-            if (l.isLoading) {
-              l.stop()
-              clearInterval(play)
-            }
-            next()
+      utils.axiosPost('https://lenkuntang.cn/xingcardServer', this.loginKey, (response) => {
+        // 登陆状态判断
+        let data = response.data
+        if (data.result === 201) {
+          vm.toastText = '别闹，又想搞事情！'
+          vm.showToast()
+          if (l.isLoading) {
+            l.stop()
+            clearInterval(play)
           }
-        })
+          next(false)
+        } else if (data.result === 211) {
+          vm.toastText = '服务器开小差了，请联系管理员'
+          vm.showToast()
+          next(false)
+        } else if (data.result === 200) {
+          vm.toastText = '社团ID错误，请重试'
+          vm.showToast()
+          if (l.isLoading) {
+            l.stop()
+            clearInterval(play)
+          }
+          next(false)
+        } else {
+          // 登陆成功，设置cookies
+          utils.setCookies(30, vm.loginKey)
+          vm.updateData(data)
+          if (l.isLoading) {
+            l.stop()
+            clearInterval(play)
+          }
+          next()
+        }
+      })
     },
     ...mapMutations({
       updateData: 'updateData',
