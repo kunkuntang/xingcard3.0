@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="col-xs-2"><span class="fui-arrow-left" @click="goBack"></span></div>
+    <div class="col-xs-2"><span class="iconfont icon-back01" style="font-size: 22px" @click="goBack"></span></div>
     <div class="search-box col-xs-8 p-l">
       <div class="row">
-        <input ref="searchInput" class="search form-control" type="search" v-model="searchQuery" @keyup.enter="doSearch(searchQuery)" placeholder="请输入联系人..." autofocus>
-        <span class="clear-btn fui-cross f-s-14" @click="clearSearch"></span>
+        <input ref="searchInput" class="iconfont icon-search form-control search" type="search" v-model="searchQuery" @keyup.enter="doSearch(searchQuery)" placeholder="请输入联系人..." autofocus>
+        <span class="clear-btn iconfont icon-cross1 f-s-14" @click="clearSearch"></span>
       </div>
     </div>
-    <div class="col-xs-2"><span class="fui-search" @click="doSearch(searchQuery)"></span></div>
+    <div class="col-xs-2"><span class="iconfont icon-search" @click="doSearch(searchQuery)"></span></div>
     <div class="clearfix"></div>
   </div>
 </template>

@@ -26,7 +26,7 @@ export default {
     let vm = this
     if (cookies) {
       vm.openLoading()
-      axios.post('http://xingkongus.duapp.com/index.php/User/loginAPP', {
+      axios.post('https://lenkuntang.cn/xingcardServer', {
         key: 82015,
         name: cookies
       },

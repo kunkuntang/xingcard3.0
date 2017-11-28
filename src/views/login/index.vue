@@ -51,7 +51,7 @@ export default {
       }, 200)
       // 请求服务器带数据
       let vm = this
-      axios.post('http://xingkongus.duapp.com/index.php/User/loginAPP', {
+      axios.post('https://lenkuntang.cn/xingcardServer', {
         key: 82015,
         name: this.loginKey
       },

@@ -3,10 +3,10 @@
     <ul class="side-bar palette-peter-river" :class="isShow ? 'show' : ''">
       <img src="../../static/img/logo.jpg" class="img-circle img-response" alt="" width="90" height="90">
       <div class="title f-s-22 m-t-sm">
-        <li class="department f-s-16 palette" :class="curIdx === index ? 'palette-belize-hole' : ''" v-for="(department, index) in departList" @click="select(index)">{{department}}</li>
+        <li class="department f-s-16 palette" :class="curIdx === index ? 'palette-belize-hole' : ''" v-for="(department, index) in departList" :key="{index}" @click="select(index)">{{department}}</li>
       </div>
       <div class="exit text-center">
-        <span class="fui-exit" @click="logout"></span>
+        <span class="iconfont icon-exit" style="font-size: 28px" @click="logout"></span>
       </div>
     </ul>
   </div>
