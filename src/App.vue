@@ -3,9 +3,11 @@
     <router-view></router-view>
     <transition name="loading-fade">
       <div class="loading" v-show="isLoading">
-        <div class="sk-spinner sk-wandering-cubes">
-          <div class="sk-cube"></div>
-          <div class="sk-cube sk-cube2"></div>
+        <div class="loading-con">
+          <div class="sk-spinner sk-wandering-cubes">
+            <div class="sk-cube"></div>
+            <div class="sk-cube sk-cube2"></div>
+          </div>
         </div>
       </div>
     </transition>
@@ -24,7 +26,6 @@ export default {
     // 取消首屏加载动画
     document.getElementById('loading').style.display = 'none'
     let cookies = utils.getCookies('www.xingkong.us')
-    console.log('cookies: ', cookies)
     let vm = this
     if (cookies) {
       vm.openLoading()
@@ -64,18 +65,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-.loading{
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 120px;
-  margin-top: -60px;
-}
-
-.loading .sk-wandering-cubes .sk-cube{
-  background-color: #3498db;
 }
 
 .loading-fade-enter-active,

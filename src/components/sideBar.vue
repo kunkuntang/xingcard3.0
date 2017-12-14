@@ -14,6 +14,7 @@
 
 <script>
 import {mapState, mapActions, mapMutations} from 'vuex'
+import path from 'path'
 export default {
   data () {
     return {
@@ -30,7 +31,7 @@ export default {
   methods: {
     logout () {
       this.hideSideBar()
-      this.$router.go(-1)
+      this.$router.push({path: path.login.login})
       document.cookie = 'www.xingkong.us='
     },
     select (idx) {

@@ -4,45 +4,61 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-title" content="XingCard3.0">
+    <meta name="apple-mobile-web-app-title" content="星名片">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fff">
     <title>xingcard3.0</title>
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   
     <link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
     <link rel="apple-touch-startup-image" href="favicons/launch.png">
     <link rel="stylesheet" href="static/css/spinkit.css">
+    <link rel="stylesheet" href="static/css/global.css">
+    <link rel="stylesheet" href="static/css/iconfont.css">
     <style>
         .loading {
             position: absolute;
-            top: 50%;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
             width: 100%;
-            height: 120px;
-            margin-top: -80px;
+            background-color: rgba(224, 224, 224, 0.7);
+            z-index: 999;
+        }
+
+        .loading-con {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            margin-top: -20px;
         }
         
         .loading .sk-wandering-cubes .sk-cube {
             background-color: #3498db;
         }
-    </style>
+        </style>
 </head>
+<link rel="stylesheet" href="static/css/flat-ui.css">
 
 <body>
     <div id="app"></div>
     <div class="loading" v-show="isLoading" id="loading">
-        <div class="sk-spinner sk-wandering-cubes">
-            <div class="sk-cube"></div>
-            <div class="sk-cube sk-cube2"></div>
+        <div class="loading-con">
+            <div class="sk-spinner sk-wandering-cubes">
+                <div class="sk-cube"></div>
+                <div class="sk-cube sk-cube2"></div>
+            </div>
         </div>
     </div>
     <!-- built files will be auto injected -->
     <script>
-        (function() {
+        window.onload = function() {
             if ('serviceWorker' in navigator) {
-                // navigator.serviceWorker.register('./sw.js');
                 navigator.serviceWorker.register('./service-worker.js');
             }
-        })();
+        }
     </script>
 </body>
 

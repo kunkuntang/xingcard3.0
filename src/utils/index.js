@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const axiosPost = (url, loginKey, callback) => {
+const axiosPost = (url, loginKey, sucCB, errCB) => {
   axios.post(url, {
     key: 82015,
     name: loginKey
-  }, {}).then(callback)
+  }, {}).then(sucCB).catch(errCB)
 }
 
 const getCookies = (cookieKey) => {

@@ -24,7 +24,7 @@ export default {
   data () {
     return {
       loginKey: '',
-      toastText: 'error'
+      toastText: '出现了点小错误...'
     }
   },
   computed: {
@@ -85,6 +85,9 @@ export default {
           }
           next()
         }
+      }, () => {
+        vm.toastText = '服务器走了一下神，请重试 >_<'
+        vm.showToast()
       })
     },
     ...mapMutations({
@@ -96,10 +99,11 @@ export default {
     toast
   },
   beforeRouteLeave (to, from, next) {
-    if (!this.title) {
+    if (this.loginKey) {
       this.authLogin(next)
     } else {
-      next()
+      this.toastText = '密码不能为空 =_=||'
+      this.showToast()
     }
   }
 }
